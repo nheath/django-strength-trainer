@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+Long cat sticky title
+{% endblock  %}
+
+{% block body %}
+<div class="grid-x">
+    <div class="cell small-6" data-sticky-container>
+        <div class="sticky" data-sticky data-margin-top="4">
+            <img src="https://ipost.files.wordpress.com/2012/05/long_cat1_2.gif" alt="long_cat">
+        </div>
+    </div>
+    <div class="cell small-6">
+        <div class="grid-y">            
+            <div class="cell small-6">
+                    <h3>Welcome {{ username }}</h3>
+            </div>
+            <div class="cell small-6">
+                <h4>You are user number {{ usercount }} on the site!</h4>
+                <p> </br> What is your best bench? Be honest</p>
+
+                {% comment %} https://stackoverflow.com/questions/13520127/submit-html-form-on-self-page {% endcomment %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.username.errors }}
+                    {{ form.username.label_tag }}        
+                    {{ form.username }}
+                    {{ form.weight.errors }}
+                    {{ form.weight.label_tag }}        
+                    {{ form.weight }}
+                    {{ form.best_bench_lbs.errors }}
+                    {{ form.best_bench_lbs.label_tag }}
+                    {{ form.best_bench_lbs }}
+                    <input type="submit" value="Register" class="button"/>
+                </form>
+                </br>
+                <div id="app-best-lift">
+                    <ul>
+                        <li v-for="lift in best_lifts">
+                            {% comment %} this is needed so the django template engine does not try to interperte vue templeting {% endcomment %}
+                            {% verbatim %}
+                            {{ lift.username }}: {{ lift.best_bench }}lbs
+                            {% endverbatim %}
+                            </br>
+                            {% verbatim %}
+                            Strength Ratio: {{ lift.strength_ratio.toPrecision(3) }}
+                            {% endverbatim %}
+                        </li>
+                    </ul>                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock  %}
+
+{% block scripts %}
+<script src="{% static "js/vueapp.js" %}"></script>
+{% endblock scripts %}
