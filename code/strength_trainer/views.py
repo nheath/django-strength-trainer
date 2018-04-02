@@ -6,11 +6,15 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def index(request):
-    page_message = "CINS465"
-    context={
-        "page_message":page_message
-    }
-    return render(request, 'index.html', context)
+    if request.user.is_authenticated:
+        username = request.user.username
+        return render(request, "home.html")
+    else:
+        return render(request, "index.html")
+
+@login_required(login_url="/")
+def home(request):
+    return render(request, "home.html")
 
 def register(request):
     if request.method == 'POST':
@@ -20,5 +24,7 @@ def register(request):
             return redirect("/")
     else:
         form = registration_form()
-    context = {"form":form}
+    context = {
+        "form":form
+        }
     return render(request,"registration/register.html",context)
