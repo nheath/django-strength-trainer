@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+</div class="body">
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x">
+            <div class="small 6">
+                <form action="/home/" method="POST">
+                    {% csrf_token %}
+                    {{ form.max_squat.errors }}
+                    {{ form.max_squat.label_tag }}
+                    {{ form.max_squat }}
+                    {{ form.max_bench.errors }}
+                    {{ form.max_bench.label_tag }}
+                    {{ form.max_bench }}
+                    {{ form.max_deadlift.errors }}
+                    {{ form.max_deadlift.label_tag }}
+                    {{ form.max_deadlift }}
+                    {{ form.max_overhead.errors }}
+                    {{ form.max_overhead.label_tag }}
+                    {{ form.max_overhead }}
+                    <input type="submit" class="button expanded" value="Create New Workout" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

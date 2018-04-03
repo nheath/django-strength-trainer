@@ -7,6 +7,7 @@ urlpatterns = [
     path('',views.index),
     path('register/', views.register),
     path('home/', views.home),
+    path('new_workout/', views.new_workout),
     path('login/', authviews.login, {
         'template_name':'registration/login.html',
         'authentication_form':LoginForm

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from .forms import NewWorkoutForm
 
 # Adapted from https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#onetoone
 class User_Profile_Model(models.Model):
@@ -27,6 +28,17 @@ class User_Profile_Model(models.Model):
     def __str__(self):
         return "user_profile " + str(self.user_id)
 
+class NewWorkout(models.Model):
+    max_squat = models.PositiveIntegerField(default=None)
+    max_bench = models.PositiveIntegerField(default=None)
+    max_deadlift = models.PositiveIntegerField(default=None)
+    max_overhead = models.PositiveIntegerField(default=None)
+    user_id = models.OneToOneField(        
+                        User,
+                        on_delete=models.CASCADE
+                )    
+    def __str__(self):
+        return "workout " + str(self.user_id)
 # class Workout(models.Model):
 
 #     squat_max = models.IntegerField(required=False)
