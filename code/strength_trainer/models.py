@@ -39,6 +39,25 @@ class NewWorkout(models.Model):
                 )    
     def __str__(self):
         return "workout " + str(self.user_id)
+
+class WorkoutWeek(models.Model):
+    length = 250
+    name = models.CharField(max_length=length)
+    bench = models.CharField(max_length=length)
+    bench_done = models.BooleanField(default=False)
+    squat = models.CharField(max_length=length)
+    sqaut_done = models.BooleanField(default=False)
+    deadlift = models.CharField(max_length=length)
+    deadlift_done = models.BooleanField(default=False)
+    overhead = models.CharField(max_length=length)
+    overhead_done = models.BooleanField(default=False)
+    associated_workout = models.ForeignKey(
+        NewWorkout,
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return str(self.associated_workout)  + str(self.name)
 # class Workout(models.Model):
 
 #     squat_max = models.IntegerField(required=False)

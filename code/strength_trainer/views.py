@@ -4,6 +4,7 @@ from .forms import registration_form, NewWorkoutForm
 from .models import NewWorkout, User_Profile_Model
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from .utils import create_workout_week
 
 def new_workout(request):
     form = NewWorkoutForm()
@@ -14,13 +15,13 @@ def new_workout(request):
 
 def index(request):
     if request.user.is_authenticated:
-        username = request.user.username
         return render(request, "home.html")
     else:
         return render(request, "index.html")
 
 @login_required(login_url="/")
 def home(request):
+    ## This is when you create a new_workout and new workout_schedule
     if request.method == 'POST':
         # get current user from request
         cur_user = request.user
@@ -49,6 +50,12 @@ def home(request):
             new_workout.save()
             cur_user_profile.has_workout = 1
             cur_user_profile.save()
+            workout_multiplier = .65
+            for i in range(1, 4):
+                create_workout_week(request, workout_multiplier, 'week ' + str(i))
+                workout_multiplier += .05
+            workout_multiplier = .4
+            create_workout_week(request, workout_multiplier, 'week 4')
     return render(request, "home.html")
 
 def register(request):
