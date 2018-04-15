@@ -1,4 +1,5 @@
 from .models import NewWorkout, User_Profile_Model, WorkoutWeek
+import math
 
 def create_workout_week(request, init_multiplier, workout_name):
     cur_user = request.user
@@ -9,14 +10,13 @@ def create_workout_week(request, init_multiplier, workout_name):
     deadlift_reps = list()
     overhead_reps = list()
     for i in range(3):
-        temp_b_rep = (cur_user_workout.max_bench * .90) * multiplier
-        temp_b_rep = floor(temp_b_rep)
+        temp_b_rep = math.floor((cur_user_workout.max_bench * .90) * multiplier)
         bench_reps.append(str(temp_b_rep))
-        temp_s_rep = (cur_user_workout.max_squat * .90) * multiplier
+        temp_s_rep = math.floor((cur_user_workout.max_squat * .90) * multiplier)
         squat_reps.append(str(temp_s_rep))
-        temp_d_rep = (cur_user_workout.max_deadlift * .90) * multiplier
+        temp_d_rep = math.floor((cur_user_workout.max_deadlift * .90) * multiplier)
         deadlift_reps.append(str(temp_d_rep))
-        temp_o_rep = (cur_user_workout.max_overhead * .90) * multiplier
+        temp_o_rep = math.floor((cur_user_workout.max_overhead * .90) * multiplier)
         overhead_reps.append(str(temp_o_rep))                   
         multiplier += .1
 

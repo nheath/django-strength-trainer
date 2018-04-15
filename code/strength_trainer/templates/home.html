@@ -3,7 +3,20 @@
 {% block body %}
 </div class="body">
     <div class="grid-container">
-        <h1>Home</h1>
+        <div class="grid-x grid-padding-x">
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class='text-center large-12 medium-12 small-12'>
+                <h1>Welcome {{ user }} </h1>
+            </div>
+            {% if has_workout %}
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class="text-center large-9 medium-10 small-12 large-offset-4 medium-offset-3">
+                <p>
+                    {{ message }}
+                </p>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

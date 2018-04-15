@@ -13,7 +13,7 @@
     {% endblock css %} 
   </head>
   <body>
-      {% if user.is_authenticated %}
+      {% if request.user.is_authenticated %}
       <div class="top-bar">
           <div class="top-bar-left">
             <ul class="dropdown menu" data-dropdown-menu>
