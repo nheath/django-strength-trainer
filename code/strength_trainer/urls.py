@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('',views.index),
     path('register/', views.register),
+        path('workout_week_api/', views.workout_week_api),
     path('home/', views.home),
     path('new_workout/', views.new_workout),
     path('login/', authviews.login, {

@@ -7,6 +7,28 @@ from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
 from .utils import create_workout_week
 
+@csrf_exempt
+def workout_week_api(request):
+    cur_user = request.user
+    workout_dict = {}
+    workout_dict['workout_weeks'] = []
+    user_workout = NewWorkout.objects.get(user_id=cur_user.id)
+    user_workout_weeks = WorkoutWeek.objects.filter(associated_workout=user_workout.id)
+    for week in user_workout_weeks:
+        workout_dict['workout_weeks'] += [{
+            "name": week.name,
+            "bench": week.bench,
+            "bench_done": week.bench_done,
+            "squat": week.squat,
+            "squat_done": week.squat_done,
+            "deadlift": week.deadlift,
+            "deadlift_done": week.deadlift_done,
+            "overhead": week.overhead,
+            "overhead_done": week.overhead_done,
+        }]
+    print(workout_dict)
+    return JsonResponse(workout_dict)
+
 def new_workout(request):
     form = NewWorkoutForm()
     context = {
@@ -32,10 +54,29 @@ def home(request):
                 "message": "The gym is empty and so is your training plan! Not much to do here if you dont have a workout, you should go create a new workout."
             }
             return render(request, "home.html", context)
+
+        workout_dict = {}
+        workout_dict['workout_weeks'] = []
+        user_workout = NewWorkout.objects.get(user_id=cur_user.id)
+        user_workout_weeks = WorkoutWeek.objects.filter(associated_workout=user_workout.id)
+        for week in user_workout_weeks:
+            workout_dict['workout_weeks'] += [{
+                "name": week.name,
+                "bench": week.bench,
+                "bench_done": week.bench_done,
+                "squat": week.squat,
+                "squat_done": week.squat_done,
+                "deadlift": week.deadlift,
+                "deadlift_done": week.deadlift_done,
+                "overhead": week.overhead,
+                "overhead_done": week.overhead_done,
+            }]
         context = {
             "user": request.user.username,
             "hasWorkout": True,
-        }      
+            "workoutWeeks": workout_dict['workout_weeks'],
+        }
+        print(context)
         return render(request, "home.html", context)
     ## This is when you create a new_workout and new workout_schedule
     if request.method == 'POST':

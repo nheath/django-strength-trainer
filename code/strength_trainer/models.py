@@ -46,7 +46,7 @@ class WorkoutWeek(models.Model):
     bench = models.CharField(max_length=length)
     bench_done = models.BooleanField(default=False)
     squat = models.CharField(max_length=length)
-    sqaut_done = models.BooleanField(default=False)
+    squat_done = models.BooleanField(default=False)
     deadlift = models.CharField(max_length=length)
     deadlift_done = models.BooleanField(default=False)
     overhead = models.CharField(max_length=length)

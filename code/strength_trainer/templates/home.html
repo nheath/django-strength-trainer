@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static "css/home.css" %}">
+{% endblock css %}
 {% block body %}
 </div class="body">
     <div class="grid-container">
@@ -23,6 +26,137 @@
             <div class="text-center large-4 medium-2 small-12 large-offset-4 medium-offset-3">
                     <a href="/new_workout/" class="button expanded">New Workout!</a>
             </div>
+            {% endif %}
+            {% if hasWorkout %}
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            {% for week in workoutWeeks %}
+            {% if week.bench_done %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs done">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if week.squat_done %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs done">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if week.overhead_done %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs done">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            {% if week.deadlift_done %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs done">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-container">
+                    <div class="large-12 workout-divs">
+                        <div class="grid-container">
+                            <p class="large-4 medium-4 small-4 workout-cell left-cell">test left</p>
+                            <p class="large-4 medium-4 small-4 workout-cell center-cell">test center</p>
+                            <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+                <!-- <ul>
+                    {% if week.bench_done %}
+                    <li>
+                        bench done
+                    </li>
+                    {% else %}
+                    <li>
+                        bench not done
+                    </li>
+                    {% endif %}
+                    {% if week.squat_done %}
+                    <li></li>
+                    {% else %}
+                    <li></li>
+                    {% endif %}
+                    {% if week.overhead_done %}
+                    <li></li>
+                    {% else %}
+                    <li></li>
+                    {% endif %}
+                    {% if week.deadlift_done %}
+                    <li></li>
+                    {% else %}
+                    <li></li>
+                    {% endif %}
+                </ul> -->
+            {% endfor %}
             {% endif %}
         </div>
     </div>

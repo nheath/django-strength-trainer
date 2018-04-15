@@ -1,0 +1,33 @@
+.workout-divs {
+    background-color: rgb(42, 71, 165);
+    border-bottom: 3px solid black;
+    border-radius: 5px;
+    padding: .7vw;
+}
+
+.done{
+    background-color: rgb(165, 42, 42);
+}
+
+.workout-divs p {
+    display: inline-block;
+}
+
+.workout-cell {
+    padding: 0px;
+    margin: 0px;
+}
+
+.right-cell {
+    padding-left: .5vw;
+    text-align: right;
+}
+
+.center-cell {
+    padding-left: .5vw;    
+    text-align: center;
+}
+
+.left-cell {
+    text-align: left;
+}
