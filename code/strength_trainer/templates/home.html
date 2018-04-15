@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block body %}
 </div class="body">
     <div class="grid-container">
@@ -8,12 +8,20 @@
             <div class='text-center large-12 medium-12 small-12'>
                 <h1>Welcome {{ user }} </h1>
             </div>
-            {% if has_workout %}
+            {% if hasWorkout == False%}
             <div class="large-12 medium-12 small-12">&nbsp;</div>
-            <div class="text-center large-9 medium-10 small-12 large-offset-4 medium-offset-3">
+            <div class="text-center large-4 medium-2 small-12 large-offset-4 medium-offset-3">
+                <img src="{% static "images/empty_gym.jpg" %}" alt="empty_gym" />
+            </div>
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class="text-center large-4 medium-2 small-12 large-offset-4 medium-offset-3">
                 <p>
                     {{ message }}
                 </p>
+            </div>
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class="text-center large-4 medium-2 small-12 large-offset-4 medium-offset-3">
+                    <a href="/new_workout/" class="button expanded">New Workout!</a>
             </div>
             {% endif %}
         </div>

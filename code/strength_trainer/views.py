@@ -29,7 +29,7 @@ def home(request):
             context = {
                 "user": request.user.username,
                 "hasWorkout": False,
-                "message": "Not much to do here if you dont have a workout, you should go create a new workout."
+                "message": "The gym is empty and so is your training plan! Not much to do here if you dont have a workout, you should go create a new workout."
             }
             return render(request, "home.html", context)
         context = {
