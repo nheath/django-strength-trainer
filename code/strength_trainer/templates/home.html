@@ -30,7 +30,83 @@
             {% if hasWorkout %}
             <div class="large-12 medium-12 small-12">&nbsp;</div>
             {% for week in workoutWeeks %}
-            {% if week.bench_done %}
+            <div class="large-3 medium-3 small-6">
+                <div class="grid-y" style="height: 30%;">                    
+                    <div class="grid-container">
+                    <div class="large-12">{{ week.name }}</div>
+                        {% if week.bench_done %}
+                        <div class="large-12 workout-divs done">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Bench</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.bench }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="large-12 workout-divs">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Bench</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.bench }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if week.squat_done %}
+                        <div class="large-12 workout-divs done">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Squat</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.squat }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="large-12 workout-divs">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Squat</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.squat }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if week.overhead_done %}
+                        <div class="large-12 workout-divs done">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Overhead</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.overhead }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="large-12 workout-divs">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Overhead</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.overhead }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if week.deadlift_done %}
+                        <div class="large-12 workout-divs done">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Deadlift</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.deadlift }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="large-12 workout-divs">
+                            <div class="grid-container">
+                                <p class="large-4 medium-4 small-4 workout-cell left-cell">Deadlift</p>
+                                <p class="large-4 medium-4 small-4 workout-cell center-cell">{{ week.deadlift }}</p>
+                                <p class="large-4 medium-4 small-4 workout-cell right-cell">test right</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+            <!-- {% if week.bench_done %}
             <div class="large-3 medium-3 small-6">
                 <div class="grid-container">
                     <div class="large-12 workout-divs done">
@@ -129,7 +205,7 @@
                     </div>
                 </div>
             </div>
-            {% endif %}
+            {% endif %} -->
                 <!-- <ul>
                     {% if week.bench_done %}
                     <li>

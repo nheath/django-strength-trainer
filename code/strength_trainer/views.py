@@ -42,6 +42,10 @@ def index(request):
     else:
         return render(request, "index.html")
 
+def update(request, week, workout):
+
+    return redirect("/home/")
+
 @login_required(login_url="/")
 def home(request):
     if request.method == "GET":
@@ -115,7 +119,7 @@ def home(request):
             cur_user_profile.save()
             workout_multiplier = .65
             for i in range(1, 4):
-                create_workout_week(request, workout_multiplier, ' week ' + str(i))
+                create_workout_week(request, workout_multiplier, ' week_' + str(i))
                 workout_multiplier += .05
             workout_multiplier = .4
             create_workout_week(request, workout_multiplier, ' week 4')
