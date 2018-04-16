@@ -6,9 +6,8 @@ from . import views
 urlpatterns = [
     path('',views.index),
     # re_path(r'^long_cat/(?P<username>.+)/$', views.long_cat),
-    re_path(r'^update/(?P<week>week_[1,2,3,4])/(?P<workout>bench|squat|overhead|deadlift)/$', views.update),
+    re_path(r'^update/(?P<week>_week_[1,2,3,4])/(?P<workout>bench|squat|overhead|deadlift)/$', views.update),
     path('register/', views.register),
-    path('workout_week_api/', views.workout_week_api),
     path('home/', views.home),
     path('new_workout/', views.new_workout),
     path('login/', authviews.login, {

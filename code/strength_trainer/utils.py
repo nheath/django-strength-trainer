@@ -2,6 +2,8 @@ from .models import NewWorkout, User_Profile_Model, WorkoutWeek
 import math
 
 def create_workout_week(request, init_multiplier, workout_name):
+    pretty_name = workout_name[-1:]
+    pretty_name = 'week ' + pretty_name
     cur_user = request.user
     cur_user_workout = NewWorkout.objects.get(user_id=cur_user.id)
     multiplier = init_multiplier
@@ -22,6 +24,7 @@ def create_workout_week(request, init_multiplier, workout_name):
 
     new_workout_week = WorkoutWeek(
         name = workout_name,
+        prettyName = pretty_name,
         bench = ','.join(bench_reps),
         squat = ','.join(squat_reps),
         deadlift = ','.join(deadlift_reps),

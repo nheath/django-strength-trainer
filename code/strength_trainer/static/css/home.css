@@ -20,14 +20,17 @@
 
 .right-cell {
     padding-left: .5vw;
+    padding-top: .2vw;
     text-align: right;
+    float: right;
 }
 
 .center-cell {
     padding-left: .5vw;    
-    text-align: left;
+    text-align: right;
 }
 
 .left-cell {
     text-align: left;
+    float: left;
 }

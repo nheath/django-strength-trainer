@@ -7,28 +7,6 @@ from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
 from .utils import create_workout_week
 
-@csrf_exempt
-def workout_week_api(request):
-    cur_user = request.user
-    workout_dict = {}
-    workout_dict['workout_weeks'] = []
-    user_workout = NewWorkout.objects.get(user_id=cur_user.id)
-    user_workout_weeks = WorkoutWeek.objects.filter(associated_workout=user_workout.id)
-    for week in user_workout_weeks:
-        workout_dict['workout_weeks'] += [{
-            "name": week.name,
-            "bench": week.bench,
-            "bench_done": week.bench_done,
-            "squat": week.squat,
-            "squat_done": week.squat_done,
-            "deadlift": week.deadlift,
-            "deadlift_done": week.deadlift_done,
-            "overhead": week.overhead,
-            "overhead_done": week.overhead_done,
-        }]
-    print(workout_dict)
-    return JsonResponse(workout_dict)
-
 def new_workout(request):
     form = NewWorkoutForm()
     context = {
@@ -43,7 +21,18 @@ def index(request):
         return render(request, "index.html")
 
 def update(request, week, workout):
-
+    cur_user = request.user
+    new_workout = NewWorkout.objects.get(user_id=cur_user.id)
+    workout_weeks = WorkoutWeek.objects.filter(associated_workout=new_workout.id)
+    workout_week = workout_weeks.get(name=week)
+    if workout == 'bench':        
+        WorkoutWeek.objects.filter(pk=workout_week.id).update(bench_done=True)
+    if workout == 'squat':        
+        WorkoutWeek.objects.filter(pk=workout_week.id).update(squat_done=True)
+    if workout == 'deadlift':        
+        WorkoutWeek.objects.filter(pk=workout_week.id).update(deadlift_done=True)        
+    if workout == 'overhead':        
+        WorkoutWeek.objects.filter(pk=workout_week.id).update(overhead_done=True)        
     return redirect("/home/")
 
 @login_required(login_url="/")
@@ -66,6 +55,7 @@ def home(request):
         for week in user_workout_weeks:
             workout_dict['workout_weeks'] += [{
                 "name": week.name,
+                "pretty_name": week.prettyName,
                 "bench": week.bench,
                 "bench_done": week.bench_done,
                 "squat": week.squat,
@@ -86,19 +76,12 @@ def home(request):
     if request.method == 'POST':
         # get current user from request
         cur_user = request.user
-        has_workout = NewWorkout.objects.filter(user_id=cur_user.id).count()
 
         # Get the current user profile from db
         cur_user_profile = User_Profile_Model.objects.get(user_id=cur_user.id)
 
         #Check if user has a workout already if so clean it up.
         has_workout = NewWorkout.objects.filter(user_id=cur_user.id).count()
-
-        if has_workout == 1:
-            associated_workout = NewWorkout.objects.get(user_id=cur_user.id)
-            has_calculated_workout = WorkoutWeek.objects.filter(associated_workout=associated_workout.id).count()
-            if has_calculated_workout > 0:
-                return HttpResponseRedirect('/home/')
 
         form = NewWorkoutForm(request.POST)
         if form.is_valid():
@@ -119,10 +102,11 @@ def home(request):
             cur_user_profile.save()
             workout_multiplier = .65
             for i in range(1, 4):
-                create_workout_week(request, workout_multiplier, ' week_' + str(i))
+                create_workout_week(request, workout_multiplier, '_week_' + str(i))
                 workout_multiplier += .05
             workout_multiplier = .4
-            create_workout_week(request, workout_multiplier, ' week 4')
+            create_workout_week(request, workout_multiplier, '_week_4')
+            return redirect('/home/')
         return render(request, "home.html")
 
 
