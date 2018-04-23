@@ -11,6 +11,7 @@
 
 .workout-divs p {
     display: inline-block;
+    color: bisque;
 }
 
 .workout-cell {

@@ -3,7 +3,15 @@ import math
 
 def create_workout_week(request, init_multiplier, workout_name):
     pretty_name = workout_name[-1:]
-    pretty_name = 'week ' + pretty_name
+    if pretty_name == "1":
+        weeks_reps = "5/5/5+"
+    if pretty_name == "2":
+        weeks_reps = "3/3/3+"
+    if pretty_name == "3":
+        weeks_reps = "5/3/1+"
+    if pretty_name == "4":
+        weeks_reps = "5/5/5"
+    pretty_name = 'Week ' + pretty_name
     cur_user = request.user
     cur_user_workout = NewWorkout.objects.get(user_id=cur_user.id)
     multiplier = init_multiplier
@@ -25,6 +33,7 @@ def create_workout_week(request, init_multiplier, workout_name):
     new_workout_week = WorkoutWeek(
         name = workout_name,
         prettyName = pretty_name,
+        reps = weeks_reps,
         bench = ','.join(bench_reps),
         squat = ','.join(squat_reps),
         deadlift = ','.join(deadlift_reps),

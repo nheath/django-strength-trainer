@@ -4,7 +4,9 @@
 </div class="body">
     <div class="grid-container">
         <div class="grid-x grid-padding-x">
-            <div class="small 6">
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class="cell large-6 medium-6 small 6">
                 <form action="/home/" method="POST">
                     {% csrf_token %}
                     {{ form.max_squat.errors }}
@@ -21,6 +23,20 @@
                     {{ form.max_overhead }}
                     <input type="submit" class="button expanded" value="Create New Workout" />
                 </form>
+            </div>
+            <div class="cell large-6 medium-6 small 6">
+                <p>
+                </br>
+                    The 5/3/1 workout focuses on what many would call the core lifts. All that is needed is your
+                    1 rep max for each of these workouts. This is the most weight that <strong>right</strong> now you could lift.
+                </br>
+                </br>
+                </br>
+                    A little more about the workout, it was developed by Jim Wendler. He designed this program to
+                    produce functional strenghth gains that could be sestained over a long period of time. Many
+                    new lifters looks at a program like this and think its too "slow" or "light. But it is a slow
+                    progressive approach that makes this program something you can do for yearsand continue to get results.                    
+                </p>
             </div>
         </div>
     </div>

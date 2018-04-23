@@ -33,7 +33,11 @@
             <div class="large-3 medium-3 small-6">
                 <div class="grid-y" style="height: 30%;">                    
                     <div class="grid-container">
-                    <div class="large-12">{{ week.pretty_name }}</div>
+                    <div class="large-12">
+                        <strong>{{ week.pretty_name }}</strong>                              
+                    </br>
+                        Rep Range: {{week.reps}}
+                    </div>
                         {% if week.bench_done %}
                         <div class="large-12 workout-divs done">
                             <div class="grid-container">

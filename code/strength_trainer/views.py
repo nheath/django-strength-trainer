@@ -76,6 +76,7 @@ def home(request):
             workout_dict['workout_weeks'] += [{
                 "name": week.name,
                 "pretty_name": week.prettyName,
+                "reps": week.reps,
                 "bench": week.bench,
                 "bench_done": week.bench_done,
                 "squat": week.squat,

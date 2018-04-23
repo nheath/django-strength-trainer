@@ -44,6 +44,7 @@ class WorkoutWeek(models.Model):
     length = 250
     name = models.CharField(max_length=length)
     prettyName = models.CharField(max_length=length)
+    reps = models.CharField(max_length=length)
     bench = models.CharField(max_length=length)
     bench_done = models.BooleanField(default=False)
     squat = models.CharField(max_length=length)

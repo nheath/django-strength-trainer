@@ -9,22 +9,23 @@ class NewWorkoutForm(forms.Form):
     max_squat = forms.IntegerField(
         min_value=0,
         max_value=9999,
-        label = mark_safe('<strong>Back Squat</strong>')
+        label = mark_safe('<strong>Back Squat 1 RM</strong>'
+        )
     )
     max_bench = forms.IntegerField(
         min_value=0,
         max_value=9999,
-        label = mark_safe('<strong>Bench Press</strong>')
+        label = mark_safe('<strong>Bench Press 1 RM</strong>')
     )
     max_deadlift = forms.IntegerField(
         min_value=0,
         max_value=9999,
-        label = mark_safe('<strong>Deadlift</strong>')
+        label = mark_safe('<strong>Deadlift 1 RM</strong>')
     )
     max_overhead = forms.IntegerField(
         min_value=0,
         max_value=9999,
-        label = mark_safe('<strong>Overhead Press</strong>')
+        label = mark_safe('<strong>Overhead Press 1 RM</strong>')
     )
 
 class LoginForm(AuthenticationForm):
