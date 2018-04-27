@@ -15,6 +15,6 @@ urlpatterns = [
         'authentication_form':LoginForm
     }, name="login"),
     path('logout/', authviews.logout,{
-        'next_page':'/login/'
+        'next_page':'/'
 }),
 ]
