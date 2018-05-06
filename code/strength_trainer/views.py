@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate, login
 from django.views.decorators.csrf import csrf_exempt
 from .utils import create_workout_week
 
+def room(request):
+    return render(request, 'chat.html',)
 
 def new_workout(request):
     form = NewWorkoutForm()

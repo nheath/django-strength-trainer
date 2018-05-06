@@ -6,22 +6,22 @@ services:
       - ./code/:/code/
     expose:
       - "8000"
-#    ports:
-#      - "80:8000"
+    ports:
+      - "8000:8000"
 
 #   Development server
-#    command: python manage.py runserver 0.0.0.0:8000
+    command: python manage.py runserver 0.0.0.0:8000
 #   Production-ish server
-    command: gunicorn -w 2 -b :8000 testProject.wsgi
-  nginx:
-    restart: always
-    build: ./nginx/
-    depends_on:
-      - web
-    ports:
-      - "80:80"
-#       - "443:443"
-    volumes:
-       - ./code/static:/static
-    links:
-       - web:web
+#    command: gunicorn -w 2 -b :8000 testProject.wsgi
+#   nginx:
+#     restart: always
+#     build: ./nginx/
+#     depends_on:
+#       - web
+#     ports:
+#       - "80:80"
+# #       - "443:443"
+#     volumes:
+#        - ./code/static:/static
+#     links:
+#        - web:web

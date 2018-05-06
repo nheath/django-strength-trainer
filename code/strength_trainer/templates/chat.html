@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% comment %} source : http://channels.readthedocs.io/en/latest/tutorial/ {% endcomment %}
+{% block title %}Chat{% endblock %}
+{% block body %}
+<div class="body">
+    <div class="grid-container">
+        <div class="gird-x grid-padding-x">
+            <div class="large-12 medium-12 small-12">&nbsp;</div>
+            <div class="large-12 medium-12 small-12">
+                <textarea id="chat-log" cols="100" rows="20"></textarea><br/>
+                <input id="chat-message-input" type="text" size="100"/><br/>
+                <input id="chat-message-submit" type="button" value="Send"/>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}
+{% load static %}
+{% block scripts %}
+<script src="{% static "js/chat.js" %}"></script>
+{% endblock scripts %}

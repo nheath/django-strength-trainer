@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dcrn9leb5a2tzv_#6tbnj=-y#7y+kk#!&(a!wls_s8pe1ksh89'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["35.197.38.192", "127.0.0.1"]
+ALLOWED_HOSTS = ["35.197.38.192", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'strength_trainer',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'testProject.wsgi.application'
+
+ASGI_APPLICATION = "testProject.routing.application"
 
 
 # Database
