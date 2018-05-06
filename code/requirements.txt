@@ -2,3 +2,4 @@ Django==2.0.1
 pytz==2017.3
 gunicorn
 channels
+channels_redis
