@@ -40,18 +40,42 @@ def update(request, week, workout):
         if single_week.bench_done and single_week.squat_done and single_week.deadlift_done and single_week.overhead_done:
             weeksdone += 1
     if weeksdone == 4:
-        # new_max_squat = new_workout.max_squat + 10
-        # NewWorkout.objects.filter(user_id=cur_user.id).update(max_squat=new_max_squat)
-        # new_max_bench = new_workout.max_bench + 5
-        # NewWorkout.objects.filter(user_id=cur_user.id).update(max_bench=new_max_bench)
-        # new_max_deadlift = new_workout.max_deadlift + 10
-        # NewWorkout.objects.filter(user_id=cur_user.id).update(max_deadlift=new_max_deadlift)
-        # new_max_overhead = new_workout.max_overhead + 5
-        # NewWorkout.objects.filter(user_id=cur_user.id).update(max_overhead=new_max_overhead)
+        new_max_squat = new_workout.max_squat + 10
+        #NewWorkout.objects.filter(user_id=cur_user.id).update(max_squat=new_max_squat)
+        new_max_bench = new_workout.max_bench + 5
+        #NewWorkout.objects.filter(user_id=cur_user.id).update(max_bench=new_max_bench)
+        new_max_deadlift = new_workout.max_deadlift + 10
+        #NewWorkout.objects.filter(user_id=cur_user.id).update(max_deadlift=new_max_deadlift)
+        new_max_overhead = new_workout.max_overhead + 5
+        #NewWorkout.objects.filter(user_id=cur_user.id).update(max_overhead=new_max_overhead)
+        form = NewWorkoutForm({
+            'max_squat' : new_max_squat,
+            'max_bench' : new_max_bench,
+            'max_deadlift' : new_max_deadlift,
+            'max_overhead' : new_max_overhead
+        })
+        congrats_message = """ Congratulations {cur_user}! You have completed your
+                           first 4 week workout cycle. It is suggested that you increase
+                           your 1 Rep Max's used to calculate your workout by 10 lbs for legs
+                           and 5 lbs for upper body. I have taken the liberty of doing that based
+                           on the 1 Rep Maxes you originally entered. I would reccomend keeping these
+                           suggested increases unless you failed to complete workouts durring this 4
+                           week cycle then I would reduce legs by 10 and upper body by 5 and repeat the 
+                           last cycle again. Good luck and keep up the hard work!
+                           """
+        context = {
+            "form":form,
+            "message": congrats_message,
+            "finished_workout": True
+        }        
+
+
+
         # new_request = HttpRequest()
         # new_request.mode = 'POST'
         # new_request.META = request.META
-        return redirect('/new_workout/')
+        return render(request, "new_workout.html", context)
+        #return redirect('/new_workout/')
         #make a new workout
     return redirect("/home/")
 

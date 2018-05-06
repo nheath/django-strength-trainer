@@ -25,6 +25,18 @@
                 </form>
             </div>
             <div class="cell large-6 medium-6 small 6">
+                {% if finished_workout %}
+                <div class="large-12 medium-12 small-12">&nbsp;</div>
+                <p>
+                    <strong>Congratulations!</strong> You have completed your first 4 week workout cycle
+                    It is suggested that you increase your 1 Rep Max by 10 lbs for leg workouts
+                    and 5 lbs for upper body. I have taken the libery of doing that automatically
+                    your previous workout's 1 Rep Max's. I recommend sticking to these gradual 
+                    increases unless you failed to complete the last cycles workouts adequitly.
+                    If that is the case subtract 10 from the squat the deadlift, and 5 from overhead 
+                    and bench and try again. Good luck and keep up the hard work! 
+                </p>
+                {% else %}                
                 <p>
                 </br>
                     The 5/3/1 workout focuses on what many would call the core lifts. All that is needed is your
@@ -37,6 +49,7 @@
                     new lifters looks at a program like this and think its too "slow" or "light. But it is a slow
                     progressive approach that makes this program something you can do for years and continue to get results.                 
                 </p>
+                {% endif %}
             </div>
         </div>
     </div>
