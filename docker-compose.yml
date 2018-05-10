@@ -13,13 +13,34 @@ services:
       - ./code/:/code/
     expose:
       - "8000"
-    # ports:
-    #   - "8000:8000"
+      - "8001"
+    ports:
+      - "8000:8000"
 
 #   Development server
-    command: python manage.py runserver 0.0.0.0:8000
+#    command: python manage.py runserver 0.0.0.0:8000
+#    command: daphne -b 0.0.0.0 -p 8001 testProject.asgi:application
 #   Production-ish server
-#   command: gunicorn -w 2 -b :8000 testProject.wsgi
+    command: gunicorn -w 2 -b :8000 testProject.wsgi
+
+
+  worker_channels:
+    build: ./code
+    command: python manage.py runworker
+    volumes:
+      - ./code:/code
+    links:
+      - redis
+  channels:
+    build: ./code
+    command: daphne -b 0.0.0.0 -p 8001 testProject.asgi:application
+    volumes:
+      - ./code:/code
+    ports:
+      - "8001:8001"
+    links:
+      - redis
+
   nginx:
     restart: always
     build: ./nginx/

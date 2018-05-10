@@ -78,8 +78,9 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('172.20.0.1', 6379)],
+            "hosts": [('redis://redis:6379', 6379)],
         },
+        "ROUTING": "testProject.routing.application",
     },
 }
 
